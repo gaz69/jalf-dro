@@ -11,7 +11,7 @@ I came with following basic requirements for the device:
 * it should use affordable and easy to use hardware, if possible no Assembly. Since Arduinos are hard to beat in price, are well documented and easy to program in C/C++, it was not a difficult choice. A chinese-made Arduino UNO was the selected plattform.
 * the device should support a minimum of 2 scales directly, with the prospect of supporting 3 scales and may be some sort of angle-finder in the future.
 * it should support the scales I already have.
-* the first version would use an LCD module as display. I had some large LCD modules (HD4470 interface) in my junk pile which have the added advantage to be directly supported by the LiquidCrystal arduino library so and one of these would have to do. 
+* the first version would use an LCD module as display. I had some large LCD modules (HD44780 interface) in my junk pile which have the added advantage to be directly supported by the LiquidCrystal arduino library so and one of these would have to do. 
 * The board (shield) for connecting the scales and the display should be simple and cheap. I decided on a hand soldered solution on a protoboard.
 
 2- Protocol types 1 and 2
@@ -30,7 +30,7 @@ Type 2 scales send an integer value containing hundredths of a millimeter when t
 The data is sent in bursts about 142ms appart (~7.04Hz). There is an idle time of ~140ms between data bursts. The start of the data is signaled by the clock line going low. The data is sampled when the clock is high.
 A data nibble consists of three short clock pulses of 100us(t1) followed by a long clock pulse of 400us(t3). Between the pulses the clock goes low for 250us(t2). The length of a data nibble is about 1.050ms (4*t1+3*t2+t3) and the complete length of a data burst ist around 1.7 ms (6*tdn).
 
-5- Sampling
+4- Sampling
 ===========
 
 I decided not to use harware interrupts and instead to poll the clock line at a rate of 25us by using Timer2. A prescaler of 1/8 gives a resolution of 0.5us on the Arduino Uno (16MHz).
