@@ -17,12 +17,11 @@ void setup(){
   //init dros
   dro_ptr = &dro_array[0];
   memset(dro_ptr,0,sizeof(dro));
-  dro_ptr->scale_type = 1;
+  dro_ptr->scale_type = 2;
   dro_ptr->label = "X";
   dro_ptr->clk_pin = 3;
   dro_ptr->data_pin = 2;
   dro_ptr->flags_1 |= (1 << FLAG_CLK_IDLE);
-  dro_ptr->flags_2 |= (1 << FLAG_INCH_ONLY);
     
   dro_ptr = &dro_array[1];
   memset(dro_ptr,0,sizeof(dro));
