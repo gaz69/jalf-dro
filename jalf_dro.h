@@ -1,3 +1,6 @@
+#ifndef __JALF_DRO_H__
+#define __JALF_DRO_H__
+
 //lcd
 #define LCD_TOP             0
 #define LCD_BOTTOM          1
@@ -44,3 +47,6 @@ void update_dro_values(dro* dro_ptr);
 
 void display_init();
 void display_update(dro* dro_ptr);
+
+#endif/*#ifndef __JALF_DRO_H__*/
+
